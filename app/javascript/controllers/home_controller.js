@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 import React from "react";
 import { createRoot } from "react-dom/client";
 
-import HomeHello from "../components/HomeHello";
+import HomePage from "../pages/Home";
 
 export default class extends Controller {
   connect() {
@@ -29,7 +29,7 @@ export default class extends Controller {
       this._reactRoot = createRoot(this._container);
     }
 
-    this._reactRoot.render(React.createElement(HomeHello, props));
+    this._reactRoot.render(React.createElement(HomePage, props));
   }
 
   unmount() {
