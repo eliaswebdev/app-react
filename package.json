@@ -2,10 +2,13 @@
   "name": "app",
   "private": true,
   "devDependencies": {
-    "esbuild": "^0.27.2"
+    "@types/react": "^19.2.10",
+    "@types/react-dom": "^19.2.3",
+    "esbuild": "^0.27.2",
+    "typescript": "^5.9.3"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
+    "build": "esbuild app/javascript/*.* app/javascript/**/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
     "build:css:compile": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
     "build:css:prefix": "postcss ./app/assets/builds/application.css --use=autoprefixer --output=./app/assets/builds/application.css",
     "build:css": "yarn build:css:compile && yarn build:css:prefix",
@@ -21,6 +24,8 @@
     "nodemon": "^3.1.11",
     "postcss": "^8.5.6",
     "postcss-cli": "^11.0.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "sass": "^1.97.3"
   },
   "browserslist": [
