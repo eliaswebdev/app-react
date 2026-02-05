@@ -1,24 +1,30 @@
 import { useEffect, useState } from "react";
-
-type Movie = { id: number; title: string; year?: number };
+import { Movie } from "../models";
+import movieService from "../services/MovieService";
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState<Movie[] | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     let mounted = true;
-    fetch("/api/movies")
-      .then((r) => r.json())
-      .then((data) => {
+
+    (async () => {
+      try {
+        const data = await movieService.list();
         if (mounted) setMovies(data);
-      })
-      .catch(() => {
-        if (mounted) setMovies([]);
-      })
-      .finally(() => {
+      } catch (err: any) {
+        if (mounted) {
+          setError(
+            err?.data?.message || err?.statusText || "Erro ao carregar filmes",
+          );
+          setMovies([]);
+        }
+      } finally {
         if (mounted) setLoading(false);
-      });
+      }
+    })();
 
     return () => {
       mounted = false;
@@ -29,11 +35,13 @@ export default function MoviesPage() {
 
   return (
     <div>
+      {error ? <div style={{ color: "red" }}>{error}</div> : null}
+
       {movies && movies.length ? (
         <ul>
-          {movies.map((m) => (
-            <li key={m.id}>
-              {m.title} {m.year ? `(${m.year})` : null}
+          {movies.map((movie) => (
+            <li key={movie.id}>
+              {movie.title} {movie.year ? `(${movie.year})` : null}
             </li>
           ))}
         </ul>
