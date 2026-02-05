@@ -3,13 +3,16 @@ import BaseService from "./BaseService";
 
 export class MovieService extends BaseService {
   constructor() {
-    super("/api");
+    // usar endpoint externo como origem dos filmes
+    super("https://www.cinemasteresina.com.br");
   }
 
   list(params?: any) {
-    return this.fetchData<Movie[]>(this.get("/movies", params));
+    // endpoint fornecido: /filmes.json
+    return this.fetchData<Movie[]>(this.get("/filmes.json", params));
   }
 
+  // Métodos abaixo permanecem, mas podem não estar disponíveis na origem externa
   getById(id: number | string) {
     return this.fetchData<Movie>(this.get(`/movies/${id}`));
   }

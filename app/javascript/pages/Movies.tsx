@@ -41,7 +41,7 @@ export default function MoviesPage() {
         <ul>
           {movies.map((movie) => (
             <li key={movie.id}>
-              {movie.title} {movie.year ? `(${movie.year})` : null}
+              {movie.titulo} {movie.semana ? `(${movie.semana})` : null}
             </li>
           ))}
         </ul>
