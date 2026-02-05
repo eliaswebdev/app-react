@@ -11,13 +11,25 @@ export default function MoviesPage() {
       {error ? <div style={{ color: "red" }}>{error.message}</div> : null}
 
       {movies && movies.length ? (
-        <ul>
+        <div className="row g-3">
           {movies.map((movie: Movie) => (
-            <li key={movie.id}>
-              {movie.titulo} {movie.semana ? `(${movie.semana})` : null}
-            </li>
+            <div key={movie.id} className="col-12 col-md-6 col-lg-3">
+              <div className="card h-100">
+                <img
+                  src={movie.cartaz}
+                  className="card-img-top"
+                  alt={movie.titulo}
+                ></img>
+                <div className="card-header">
+                  <h5 className="card-title mb-0">{movie.titulo}</h5>
+                </div>
+                <div className="card-body">
+                  {movie.semana ? `(${movie.semana})` : null}
+                </div>
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
       ) : (
         <div>Nenhum filme encontrado</div>
       )}
