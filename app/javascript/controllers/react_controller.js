@@ -3,7 +3,7 @@ import {
   mount,
   mountComponent as mountComponentRoot,
   unmount,
-} from "../react_application";
+} from "../react/react_application";
 
 export default class ReactController extends Controller {
   connect() {

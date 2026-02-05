@@ -7,8 +7,8 @@ class PagesController < ApplicationController
   def about
     # props inline para a página About (exemplo)
     @about_props = {
-      title: "Sobre nós",
-      team: [ "Elias", "Time" ],
+      title: "About us",
+      team: [ "Elias", "Pablo", "Henrique" ],
       description: "Página About com props passadas inline pelo Rails"
     }
   end

@@ -1,4 +1,4 @@
-import MoviesPage from "../pages/Movies";
+import MoviesPage from "../react/pages/Movies";
 import ReactController from "./react_controller";
 
 export default class extends ReactController {

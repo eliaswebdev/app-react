@@ -1,4 +1,5 @@
-import { useMovies } from "../queries/movieQueries";
+import { Movie } from "../models";
+import { useMovies } from "../queries/movie";
 
 export default function MoviesPage() {
   const { data: movies, isLoading, error } = useMovies();
@@ -11,10 +12,9 @@ export default function MoviesPage() {
 
       {movies && movies.length ? (
         <ul>
-          {movies.map((movie: any) => (
-            <li key={movie.id ?? movie.codigo ?? movie.slug}>
-              {movie.titulo || movie.title || movie.name}{" "}
-              {movie.semana ? `(${movie.semana})` : null}
+          {movies.map((movie: Movie) => (
+            <li key={movie.id}>
+              {movie.titulo} {movie.semana ? `(${movie.semana})` : null}
             </li>
           ))}
         </ul>

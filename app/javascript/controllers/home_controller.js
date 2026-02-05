@@ -1,4 +1,4 @@
-import HomePage from "../pages/Home";
+import HomePage from "../react/pages/Home";
 import ReactController from "./react_controller";
 
 export default class extends ReactController {

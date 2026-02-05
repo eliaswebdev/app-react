@@ -1,4 +1,4 @@
-import AboutPage from "../pages/About";
+import AboutPage from "../react/pages/About";
 import ReactController from "./react_controller";
 
 export default class extends ReactController {
